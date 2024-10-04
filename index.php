@@ -7,46 +7,38 @@
 
 <body>
     <?php
-        $movies = [
+        $books = [
             [
-                'name' => 'Back to the Future',
-                'releaseYear' => 1985,
+                'name' => 'Do Androids Dream of Electric Sheep',
+                'author' => 'Philip K. Dick',
+                'releaseYear' => 1968,
+                'purchaseUrl' => 'http://example.com'
             ],
-
             [
-                'name' => "Weekend at Bernie's",
-                'releaseYear' => 1989,
+                'name' => 'Project Hail Mary',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2021,
+                'purchaseUrl' => 'http://example.com'
             ],
-
             [
-                'name' => 'Pirates of the Caribbean',
-                'releaseYear' => 2003,
-            ],
-
-            [
-                'name' => 'Interstellar',
-                'releaseYear' => 2014,
+                'name' => 'The Martian',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2011,
+                'purchaseUrl' => 'http://example.com'
             ],
         ];
 
-        function filterByRecent($movies)
-        {
-            $filteredMovies = [];
-
-            foreach ($movies as $movie) {
-                if ($movie['releaseYear'] >= 2000) {
-                    $filteredMovies[] = $movie;
-                }
-            }
-
-            return $filteredMovies;
-        }
+        $filteredBooks = array_filter($books, function ($book) {
+            return $book['releaseYear'] >= 1950 && $book['releaseYear'] <= 2020;
+        });
     ?>
 
     <ul>
-        <?php foreach (filterByRecent($movies) as $movie) : ?>
+        <?php foreach ($filteredBooks as $book) : ?>
             <li>
-                <?= $movie['name'] ?>
+                <a href="<?= $book['purchaseUrl'] ?>">
+                    <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
+                </a>
             </li>
         <?php endforeach; ?>
     </ul>
