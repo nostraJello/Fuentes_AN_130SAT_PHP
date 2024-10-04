@@ -6,8 +6,4 @@ $business = [
     'categories' => ["Testing", "PHP", "JavaScript"] 
 ];
 
-function register($user) {
-    
-}
-
 require "index.view.php";
