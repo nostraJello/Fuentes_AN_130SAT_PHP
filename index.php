@@ -7,28 +7,46 @@
 
 <body>
     <?php
-        $books = [
+        $movies = [
             [
-                'name' => 'Do Androids Dream of Electric Sheep',
-                'author' => 'Philip K. Dick',
-                'releaseYear' => 1968,
-                'purchaseUrl' => 'http://example.com'
+                'name' => 'Back to the Future',
+                'releaseYear' => 1985,
             ],
+
             [
-                'name' => 'Project Hail Mary',
-                'author' => 'Andy Weir',
-                'releaseYear' => 2021,
-                'purchaseUrl' => 'http://example.com'
-            ]
+                'name' => "Weekend at Bernie's",
+                'releaseYear' => 1989,
+            ],
+
+            [
+                'name' => 'Pirates of the Caribbean',
+                'releaseYear' => 2003,
+            ],
+
+            [
+                'name' => 'Interstellar',
+                'releaseYear' => 2014,
+            ],
         ];
+
+        function filterByRecent($movies)
+        {
+            $filteredMovies = [];
+
+            foreach ($movies as $movie) {
+                if ($movie['releaseYear'] >= 2000) {
+                    $filteredMovies[] = $movie;
+                }
+            }
+
+            return $filteredMovies;
+        }
     ?>
 
     <ul>
-        <?php foreach ($books as $book) : ?>
+        <?php foreach (filterByRecent($movies) as $movie) : ?>
             <li>
-                <a href="<?= $book['purchaseUrl'] ?>">
-                    <?= $book['name'] ?> (<?= $book['releaseYear'] ?>)
-                </a>
+                <?= $movie['name'] ?>
             </li>
         <?php endforeach; ?>
     </ul>
