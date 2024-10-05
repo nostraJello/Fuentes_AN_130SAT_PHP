@@ -1,34 +1,9 @@
 <?php
 
-function dd($value)
-{
-    echo "<pre>";
-    var_dump($value);
-    echo "</pre>";
+$router->get('/', 'controllers/index.php');
+$router->get('/about', 'controllers/about.php');
+$router->get('/contact', 'controllers/contact.php');
 
-    die();
-}
-
-function urlIs($value)
-{
-    return $_SERVER['REQUEST_URI'] === $value;
-}
-
-function authorize($condition, $status = Response::FORBIDDEN)
-{
-    if (! $condition) {
-        abort($status);
-    }
-}
-
-function base_path($path)
-{
-    return BASE_PATH . $path;
-}
-
-function view($path, $attributes = [])
-{
-    extract($attributes);
-
-    require base_path('views/' . $path);
-}
+$router->get('/notes', 'controllers/notes/index.php');
+$router->get('/note', 'controllers/notes/show.php');
+$router->get('/notes/create', 'controllers/notes/create.php');
