@@ -28,6 +28,7 @@ $user = $db->query('select * from users where email = :email', [
     'email' => $email
 ])->find();
 
+
 if ($user) {
     header('location: /');
     exit();
