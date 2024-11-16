@@ -13,7 +13,7 @@
                                 <label
                                     for="body"
                                     class="block text-sm font-medium text-gray-700"
-                                >Body</label>
+                                >Main Body</label>
 
                                 <div class="mt-1">
                                     <input
